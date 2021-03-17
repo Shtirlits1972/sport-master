@@ -1,7 +1,7 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:pulse_gym/componnents/common/workout-level.dart';
+import 'package:pulse_gym/components/common/workout-level.dart';
 import 'package:pulse_gym/core/constants.dart';
 import 'package:pulse_gym/domain/user.dart';
 import 'package:pulse_gym/domain/workout.dart';

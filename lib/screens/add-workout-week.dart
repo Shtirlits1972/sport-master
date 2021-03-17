@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:pulse_gym/componnents/common/save-button.dart';
+import 'package:pulse_gym/components/common/save-button.dart';
 import 'package:pulse_gym/core/constants.dart';
 import 'package:pulse_gym/domain/workout.dart';
 import 'package:pulse_gym/screens/add-workout-day.dart';
@@ -121,7 +121,7 @@ class _AddWorkoutWeekState extends State<AddWorkoutWeek> {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: FormBuilderTextField(
-                    attribute: "notes",
+                    name: "notes",
                     decoration: InputDecoration(
                       labelText: "Notes",
                     ),
@@ -131,7 +131,7 @@ class _AddWorkoutWeekState extends State<AddWorkoutWeek> {
                         week.notes = val;
                       });
                     },
-                    validators: [
+                    validator: [
                       FormBuilderValidators.maxLength(500),
                     ],
                   ),

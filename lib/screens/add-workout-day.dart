@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:pulse_gym/componnents/common/save-button.dart';
-import 'package:pulse_gym/componnents/common/toast.dart';
-import 'package:pulse_gym/componnents/drill/drill-remove-alert.dart';
-import 'package:pulse_gym/componnents/drill/drill.dart';
+import 'package:pulse_gym/components/common/save-button.dart';
+import 'package:pulse_gym/components/common/toast.dart';
+import 'package:pulse_gym/components/drill/drill-remove-alert.dart';
+import 'package:pulse_gym/components/drill/drill.dart';
 import 'package:pulse_gym/core/constants.dart';
 import 'package:pulse_gym/domain/workout.dart';
 
@@ -167,7 +167,7 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FormBuilderTextField(
-                    attribute: "notes",
+                    name: "notes",
                     decoration: InputDecoration(
                       labelText: "Notes",
                     ),
@@ -177,7 +177,7 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
                         day.notes = val;
                       });
                     },
-                    validators: [
+                    validator: [
                       FormBuilderValidators.maxLength(500),
                     ],
                   ),
@@ -282,17 +282,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
               child: FormBuilderTextField(
                 initialValue:
                     block.minutes == null ? '' : block.minutes.toString(),
-                attribute: "minutes_$index",
+                name: "minutes_$index",
                 decoration: InputDecoration(
                   labelText: "Minutes *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.minutes = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -309,17 +309,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
               child: FormBuilderTextField(
                 initialValue:
                     block.timeCapMin == null ? '' : block.timeCapMin.toString(),
-                attribute: "timeCapMin_$index",
+                name: "timeCapMin_$index",
                 decoration: InputDecoration(
                   labelText: "Time Cap in minutes *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.timeCapMin = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -329,17 +329,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
               child: FormBuilderTextField(
                 initialValue:
                     block.rounds == null ? '' : block.rounds.toString(),
-                attribute: "rounds_$index",
+                name: "rounds_$index",
                 decoration: InputDecoration(
                   labelText: "Rounds *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.rounds = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -350,7 +350,7 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
                 initialValue: block.restBetweenRoundsMin == null
                     ? ''
                     : block.restBetweenRoundsMin.toString(),
-                attribute: "restBetweenRoundsMin_$index",
+                name: "restBetweenRoundsMin_$index",
                 decoration: InputDecoration(
                   labelText: "Rest between rounds in minutes *",
                 ),
@@ -358,10 +358,10 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
                   if (isNumeric(val))
                     block.restBetweenRoundsMin = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
+                validator: [
+                  FormBuilderValidators.required(context,),
                   FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -378,17 +378,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
               child: FormBuilderTextField(
                 initialValue:
                     block.timeCapMin == null ? '' : block.timeCapMin.toString(),
-                attribute: "timeCapMin_$index",
+                name: "timeCapMin_$index",
                 decoration: InputDecoration(
                   labelText: "Time Cap in minutes *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.timeCapMin = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -399,17 +399,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
                 initialValue: block.intervalMin == null
                     ? ''
                     : block.intervalMin.toString(),
-                attribute: "intervalMin_$index",
+                name: "intervalMin_$index",
                 decoration: InputDecoration(
                   labelText: "Interval length in minutes *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.intervalMin = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),
@@ -426,17 +426,17 @@ class _AddWorkoutDayState extends State<AddWorkoutDay> {
               child: FormBuilderTextField(
                 initialValue:
                     block.timeMin == null ? '' : block.timeMin.toString(),
-                attribute: "timeMin_$index",
+                name: "timeMin_$index",
                 decoration: InputDecoration(
                   labelText: "Minutes *",
                 ),
                 onChanged: (dynamic val) {
                   if (isNumeric(val)) block.timeMin = cleanInt(val);
                 },
-                validators: [
-                  FormBuilderValidators.required(),
-                  FormBuilderValidators.max(100),
-                  FormBuilderValidators.numeric(),
+                validator: [
+                  FormBuilderValidators.required(context,),
+                  FormBuilderValidators.max(context,100),
+                  FormBuilderValidators.numeric(context,),
                 ],
                 keyboardType: TextInputType.number,
               ),

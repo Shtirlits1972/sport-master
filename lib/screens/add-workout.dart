@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:pulse_gym/componnents/common/save-button.dart';
-import 'package:pulse_gym/componnents/common/toast.dart';
+import 'package:pulse_gym/components/common/save-button.dart';
+import 'package:pulse_gym/components/common/toast.dart';
 import 'package:pulse_gym/core/constants.dart';
 import 'package:pulse_gym/domain/user.dart';
 import 'package:pulse_gym/domain/workout.dart';
@@ -93,7 +93,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                 children: <Widget>[
                   FormBuilderTextField(
                     initialValue: workout.title,
-                    attribute: "title",
+                    name: "title",
                     decoration: InputDecoration(
                       labelText: "Title*",
                     ),
@@ -102,13 +102,13 @@ class _AddWorkoutState extends State<AddWorkout> {
                         workout.title = val;
                       });
                     },
-                    validators: [
-                      FormBuilderValidators.required(),
-                      FormBuilderValidators.maxLength(100),
+                    validator: [
+                      FormBuilderValidators.required(context,),
+                      FormBuilderValidators.maxLength(context,100),
                     ],
                   ),
                   FormBuilderDropdown(
-                    attribute: "level",
+                    name: "level",
                     decoration: InputDecoration(
                       labelText: "Level*",
                     ),
@@ -120,7 +120,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                         workout.level = val;
                       });
                     },
-                    validators: [FormBuilderValidators.required()],
+                    validator: [FormBuilderValidators.required(context,)],
                     items: <String>['Beginner', 'Intermediate', 'Advanced']
                         .map((level) => DropdownMenuItem(
                               value: level,
@@ -130,7 +130,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                   ),
                   FormBuilderTextField(
                     initialValue: workout.description,
-                    attribute: "description",
+                    name: "description",
                     decoration: InputDecoration(
                       labelText: "Description*",
                     ),
@@ -139,8 +139,8 @@ class _AddWorkoutState extends State<AddWorkout> {
                         workout.description = val;
                       });
                     },
-                    validators: [
-                      FormBuilderValidators.required(),
+                    validator: [
+                      FormBuilderValidators.required(context,),
                       FormBuilderValidators.maxLength(500),
                     ],
                   ),
